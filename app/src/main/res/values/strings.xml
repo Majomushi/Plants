@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Plants</string>
+    <string name="enter_name">Nombre</string>
+    <string name="enter_email">Email</string>
+    <string name="enter_password">Contraseña</string>
+    <string name="registrar">Resgistrar Usuario</string>
+    <string name="cerrar_sesion">Cerrar Sesion</string>
+    <string name="inicio_sesion">Iniciar Sesion</string>
+    <string name="ya_tiene_cuenta">Ya tengo Cuenta</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
