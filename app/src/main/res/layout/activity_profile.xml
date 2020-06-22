@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#d8000000"
     tools:context=".ProfileActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -14,9 +13,11 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+       android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
         app:title="@string/app_name"
-        app:titleTextColor="#fff"/>
+        app:titleTextColor="#fff"
+        />
 
 
     <FrameLayout
