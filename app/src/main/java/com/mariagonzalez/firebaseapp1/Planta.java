@@ -1,5 +1,7 @@
 package com.mariagonzalez.firebaseapp1;
 
+import androidx.annotation.NonNull;
+
 public class Planta {
     // Clase basica que representa lo que es una planta.
     private String nombreComun;
@@ -7,6 +9,11 @@ public class Planta {
     private String familia;
     private Boolean especiePrincipal;
 
+    @NonNull
+    @Override
+    public String toString() {
+        return this.nombreComun;
+    }
 
     public Boolean getEspeciePrincipal(){
         return this.especiePrincipal;

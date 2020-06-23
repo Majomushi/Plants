@@ -1,19 +1,19 @@
 package com.mariagonzalez.firebaseapp1;
 
+import android.os.AsyncTask;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Botanica {
-    //Backend-Parser de Trefle API para busqueda de Especies.
-    //FALTA HACER PRUEBAS EN UNA APLICACION REAL.
-
+public class Botanica{
     private String token = "NzNsNjRtaUVKc1BuajFmTjh1VlEydz09";
     private String endpoint = "https://trefle.io/api"; // Esta api esta sujeta a cambiar en el futuro proximo :v
 
@@ -68,11 +68,13 @@ public class Botanica {
                         planta.setEspeciePrincipal(especiePrincipal);
                         lista.add(planta);
                     }
+
                     return lista;
             }
             connection.disconnect();
         }catch(Exception e){
-            System.out.println("Error al obtener datos. " + e.getMessage());
+            //System.out.println("Error al obtener datos. " + e.getMessage());
+            e.printStackTrace();
         }
         return null;
     }

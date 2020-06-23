@@ -1,17 +1,26 @@
 package com.mariagonzalez.firebaseapp1;
 
+import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 //Generar la lista, quise hacer un ejemplo, sin embargo tuve un problema con el adapter :D
 //Para poder mostrar mis datos
@@ -20,8 +29,10 @@ public class FragmentSearch extends Fragment {
 
     SearchView mSearchView;
     ListView mList;
+    Botanica botanica = new Botanica(); // POC
+    List<Planta> list = new ArrayList<>();
+    List<String> lista2 = new ArrayList<>();
 
-    ArrayList<String> list;
     ArrayAdapter<String> adapter;
 
     public FragmentSearch() {
@@ -39,8 +50,14 @@ public class FragmentSearch extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
+        /*
+        * Desactiva cualquier metodo de seguridad de android para poder ejecutar la busqueda en el mismo hilo.
+        * Intente hacerlo de la buena manera y de pura v**** sirvio :v PD: Eliminar este comentario antes de darselo al maestro, salu3.
+        * */
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                .detectAll()
+                .penaltyLog()
+                .build();  StrictMode.setThreadPolicy(policy);
 
     }
 
@@ -49,8 +66,42 @@ public class FragmentSearch extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
 
-        mSearchView = (SearchView) view.findViewById(R.id.searchView);
         mList = (ListView) view.findViewById(R.id.myList);
+        mSearchView = (SearchView) view.findViewById(R.id.searchView);
+        List<Planta> list = new ArrayList<Planta>();
 
-        return view;   }
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                ejecutarQuery();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //hace algo cuando el texto cambia, en este caso, nada.
+                return false;
+            }
+        });
+        return view;
+    }
+
+    private void actualizarLista(){
+        CustomAdapter arrayAdapter = new CustomAdapter(getActivity(),R.layout.list_view,list);
+        //arrayAdapter.notifyDataSetChanged();
+        mList.setAdapter(arrayAdapter);
+        System.out.println("Size: "+list.size());
+    }
+
+    private void ejecutarQuery(){
+        String dato = mSearchView.getQuery().toString();
+        list = botanica.buscar(dato);
+        try {
+            list = botanica.buscar(dato);
+            actualizarLista();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
