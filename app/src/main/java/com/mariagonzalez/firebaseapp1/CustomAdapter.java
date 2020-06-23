@@ -30,7 +30,9 @@ public class CustomAdapter extends ArrayAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.list_view,null);
         TextView textView = (TextView) view.findViewById(R.id.textViewLista);
+        TextView textView1 = (TextView) view.findViewById(R.id.textViewNombreCientifico);
         textView.setText(lista.get(position).getNombreComun());
+        textView1.setText(lista.get(position).getNombreCientifico());
         return view;
     }
 

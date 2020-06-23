@@ -5,17 +5,34 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="70dp"
+        android:layout_height="80dp"
         android:padding="10dp"
         android:src="@drawable/hojalist" />
 
-    <TextView
-        android:id="@+id/textViewLista"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="20dp"
-        android:text="Demo"
-        android:textColor="#F4F4F4" />
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/textViewLista"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:text="comunPlaceholder"
+            android:textStyle="bold"
+            android:textSize="22dp"
+            android:textColor="#F4F4F4" />
+        <TextView
+            android:id="@+id/textViewNombreCientifico"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:textSize="15dp"
+            android:text="cientificoPlaceholder"
+            android:textColor="#F4F4F4" />
+    </LinearLayout>
 </LinearLayout>
