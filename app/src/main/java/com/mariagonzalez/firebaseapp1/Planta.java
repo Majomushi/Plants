@@ -2,7 +2,9 @@ package com.mariagonzalez.firebaseapp1;
 
 import androidx.annotation.NonNull;
 
-public class Planta {
+import java.io.Serializable;
+
+public class Planta implements Serializable {
     // Clase basica que representa lo que es una planta.
     private String nombreComun;
     private String nombreCientifico;

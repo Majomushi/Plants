@@ -5,12 +5,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -69,6 +72,24 @@ public class FragmentSearch extends Fragment {
         mList = (ListView) view.findViewById(R.id.myList);
         mSearchView = (SearchView) view.findViewById(R.id.searchView);
         List<Planta> list = new ArrayList<Planta>();
+
+        mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                // AQUI VA EL CODIGO PARA MANDAR EL OTRO FRAGMENT.
+                Planta planta = (Planta) parent.getAdapter().getItem(position);
+                FragmentInfo fragmentInfo = new FragmentInfo();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("planta",planta);
+                fragmentInfo.setArguments(bundle);
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(FragmentSearch.super.getId(),fragmentInfo);
+                fragmentTransaction.addToBackStack(null);
+               fragmentTransaction.commit();
+            }
+        });
 
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
             @Override

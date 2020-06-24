@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +24,8 @@ public class FragmentInfo extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private TextView nombreComun,nombreCientifico,familia;
 
     public FragmentInfo() {
         // Required empty public constructor
@@ -59,6 +62,17 @@ public class FragmentInfo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_info, container, false);
+        View view = inflater.inflate(R.layout.fragment_info, container, false);
+
+        nombreComun = view.findViewById(R.id.textViewCommonName);
+        nombreCientifico = view.findViewById(R.id.textViewScientificName);
+        familia = view.findViewById(R.id.textViewFamilia);
+        Bundle bundle = getArguments();
+        Planta info = (Planta) bundle.getSerializable("planta");
+
+        nombreComun.setText(info.getNombreComun());
+        nombreCientifico.setText(info.getNombreCientifico());
+        familia.setText(info.getFamilia());
+        return view;
     }
 }

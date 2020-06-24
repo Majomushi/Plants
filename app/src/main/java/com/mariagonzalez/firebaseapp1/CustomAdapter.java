@@ -36,6 +36,12 @@ public class CustomAdapter extends ArrayAdapter {
         return view;
     }
 
+    @Nullable
+    @Override
+    public Object getItem(int position) {
+        return lista.get(position);
+    }
+
     @Override
     public int getCount() {
         return lista.size();
