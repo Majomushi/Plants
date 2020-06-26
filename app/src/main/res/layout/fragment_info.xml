@@ -14,9 +14,10 @@
 
         <ImageView
             android:id="@+id/imageViewPlant"
-            android:layout_width="290dp"
-            android:layout_height="200dp"
-            android:src="@drawable/comprobar" />
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/flor" />
+
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp" />
@@ -28,15 +29,32 @@
             android:text="Nombre Comun"
             android:textAlignment="center"
             android:textColor="#fff"
-            android:textSize="48dp"/>
+            android:textSize="40dp"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre Cientifico:"
+            android:textAlignment="center"
+            android:textColor="#B8B8B8"
+            android:textSize="15dp"/>
         <TextView
             android:id="@+id/textViewScientificName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nombre Cientifico"
             android:textAlignment="center"
-            android:textColor="#fff"
-            android:textSize="28dp"/>
+            android:textColor="#ECECEC"
+            android:textSize="25dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Familia:"
+            android:textAlignment="center"
+            android:textColor="#B8B8B8"
+            android:textSize="15dp"/>
 
         <TextView
             android:id="@+id/textViewFamilia"
@@ -44,8 +62,8 @@
             android:layout_height="wrap_content"
             android:text="Familia"
             android:textAlignment="center"
-            android:textColor="#fff"
-            android:textSize="25dp"/>
+            android:textColor="#EDEDED"
+            android:textSize="20dp"/>
 
     </LinearLayout>
 

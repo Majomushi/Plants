@@ -18,6 +18,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/input"
+        android:iconifiedByDefault="?android:attr/windowOverscan"
         android:queryHint="Search Here"
         android:theme="@style/ThemeOverlay.AppCompat.Dark" />
 
